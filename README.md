@@ -22,16 +22,9 @@ This project is a dynamic dashboard application built with React, Redux, Bootstr
 Follow these instructions to get a copy of the project up and running on your local machine.
 
 1. Clone the Repository
-Clone the repository using Git:
-
->>>> git clone https://github.com/shaik-sadhiks007/Accuknox_Assessment.git
-  
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
-# Accuknox_Assessment
->>>>>>> 2f7c2e728f59026514d1f36fb75b303be5127fa7
+- git clone https://github.com/shaik-sadhiks007/Accuknox_Assessment.git
+- cd Accuknox_Assessment
+2. Install Dependencies
+- npm install
+3. Start the Development Server
+- npm run dev
