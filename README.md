@@ -2,6 +2,7 @@
 
 # Overview
 This project is a dynamic dashboard application built with React, Redux, Bootstrap, and ViteJS. It allows users to manage categories and widgets efficiently with a responsive user interface.
+- website live at https://main--melodious-chimera-2bf8e4.netlify.app/
 
 # Technologies Used
 - React: Frontend library for building user interfaces.
