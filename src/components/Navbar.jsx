@@ -1,29 +1,25 @@
-import { useEffect, useState } from "react";
-import { addCategory, handleSearch } from "../redux/categoriesSlice";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { addCategory, handleSearch } from "../redux/categoriesSlice";
 
 function Navbar() {
-
     const [newCategoryName, setNewCategoryName] = useState('');
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState('');
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
-    console.log(search, "se")
-
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const handleAddCategory = (e) => {
         e.preventDefault();
         dispatch(addCategory({ newCategoryName }));
         setNewCategoryName('');
-        const modal = document.getElementById('addCategoryModal');
-        const modalInstance = window.bootstrap.Modal.getInstance(modal);
-        if (modalInstance) {
-            modalInstance.hide();
-        }
+        setIsModalVisible(false); // Hide the modal
     };
+
     useEffect(() => {
-        dispatch(handleSearch(search))
-    }, [search])
+        dispatch(handleSearch(search));
+    }, [search, dispatch]);
+
     return (
         <>
             <div className='container'>
@@ -50,37 +46,37 @@ function Navbar() {
                     <div className='col-12 col-md-3 text-end'>
                         <button
                             className='btn custom-btn'
-                            data-bs-toggle="modal"
-                            data-bs-target="#addCategoryModal"
-                            onClick={(e) => handleAddCategory(e)}
+                            onClick={() => setIsModalVisible(true)} // Show modal
                         >
                             Add Category +
                         </button>
                     </div>
                 </div>
 
-                {/* Add Category Modal */}
-                <div
-                    className="modal fade"
-                    id="addCategoryModal"
-                    tabIndex="-1"
-                    aria-labelledby="addCategoryModalLabel"
-                    aria-hidden="true"
-                >
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="addCategoryModalLabel">
+                {/* Custom Modal Backdrop */}
+                {isModalVisible && (
+                    <div
+                        className="custom-backdrop show"
+                        onClick={(e) => {
+                            // Close modal if clicking outside of the modal content
+                            if (e.target === e.currentTarget) {
+                                setIsModalVisible(false);
+                            }
+                        }}
+                    >
+                        <div className="custom-modal show">
+                            <div className="custom-modal-header">
+                                <h5 className="modal-title">
                                     Add New Category
                                 </h5>
                                 <button
                                     type="button"
                                     className="btn-close"
-                                    data-bs-dismiss="modal"
+                                    onClick={() => setIsModalVisible(false)} // Hide modal
                                     aria-label="Close"
                                 ></button>
                             </div>
-                            <div className="modal-body">
+                            <div className="custom-modal-body">
                                 <form onSubmit={handleAddCategory}>
                                     <div className="mb-3">
                                         <label htmlFor="categoryName" className="form-label">
@@ -102,12 +98,10 @@ function Navbar() {
                             </div>
                         </div>
                     </div>
-                </div>
+                )}
             </div>
-
         </>
-
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;
