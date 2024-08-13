@@ -4,4 +4,60 @@ body {
   /* background-color: rgb(149, 95, 199); */
 }
 
+/* Custom modal backdrop */
+.custom-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040; 
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
 
+/* Show the backdrop */
+.custom-backdrop.show {
+  opacity: 1;
+}
+
+/* Custom modal */
+.custom-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 0.3rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1050; 
+  max-width: 500px;
+  width: 100%;
+  padding: 1rem;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Show the modal */
+.custom-modal.show {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Modal header */
+.custom-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+/* Modal footer */
+.custom-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+}
