@@ -1,6 +1,14 @@
-<<<<<<< HEAD
-# React + Vite
+# Accuknox_Assessment
 
+# Overview
+This project is a dynamic dashboard application built with React, Redux, Bootstrap, and ViteJS. It allows users to manage categories and widgets efficiently with a responsive user interface.
+
+# Technologies Used
+- React: Frontend library for building user interfaces.
+- Redux: State management for predictable application state.
+- Bootstrap: Styling framework for responsive design.
+- ViteJS: Build tool for fast development and bundling.
+  
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
