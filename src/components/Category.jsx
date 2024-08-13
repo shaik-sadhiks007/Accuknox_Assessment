@@ -29,9 +29,6 @@ function Category({ category }) {
             return;
         }
 
-        // Log for debugging
-        console.log('Adding widget to category index:', selectedCategoryIndex);
-
         dispatch(addWidget({ categoryIndex: selectedCategoryIndex, widgetName, widgetText }));
         setWidgetName('');
         setWidgetText('');
@@ -64,58 +61,58 @@ function Category({ category }) {
             {/* Conditionally Render Widget Modal */}
             {isModalOpen && (
                 <div
-                    className="modal show d-block"
-                    id="addWidgetModal"
-                    tabIndex="-1"
-                    aria-labelledby="addWidgetModalLabel"
-                    aria-hidden="true"
+                    className="custom-backdrop show"
+                    onClick={(e) => {
+                        // Close modal if clicking outside of the modal content
+                        if (e.target === e.currentTarget) {
+                            handleHideWidgetModal();
+                        }
+                    }}
                 >
-                    <div className="modal-dialog modal-dialog-scrollable">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="addWidgetModalLabel">
-                                    Add New Widget
-                                </h5>
-                                <button
-                                    type="button"
-                                    className="btn-close"
-                                    onClick={handleHideWidgetModal}
-                                    aria-label="Close"
-                                ></button>
-                            </div>
-                            <div className="modal-body">
-                                <form onSubmit={handleAddWidget}>
-                                    <div className="mb-3">
-                                        <label htmlFor="widgetName" className="form-label">
-                                            Widget Name
-                                        </label>
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            id="widgetName"
-                                            value={widgetName}
-                                            onChange={(e) => setWidgetName(e.target.value)}
-                                            required
-                                        />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="widgetText" className="form-label">
-                                            Widget Text
-                                        </label>
-                                        <textarea
-                                            className="form-control"
-                                            id="widgetText"
-                                            rows="3"
-                                            value={widgetText}
-                                            onChange={(e) => setWidgetText(e.target.value)}
-                                            required
-                                        ></textarea>
-                                    </div>
-                                    <button type="submit" className="btn btn-primary">
-                                        Add widget
-                                    </button>
-                                </form>
-                            </div>
+                    <div className="custom-modal show">
+                        <div className="custom-modal-header">
+                            <h5 className="modal-title">
+                                Add New Widget
+                            </h5>
+                            <button
+                                type="button"
+                                className="btn-close"
+                                onClick={handleHideWidgetModal}
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div className="custom-modal-body">
+                            <form onSubmit={handleAddWidget}>
+                                <div className="mb-3">
+                                    <label htmlFor="widgetName" className="form-label">
+                                        Widget Name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="widgetName"
+                                        value={widgetName}
+                                        onChange={(e) => setWidgetName(e.target.value)}
+                                        required
+                                    />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="widgetText" className="form-label">
+                                        Widget Text
+                                    </label>
+                                    <textarea
+                                        className="form-control"
+                                        id="widgetText"
+                                        rows="3"
+                                        value={widgetText}
+                                        onChange={(e) => setWidgetText(e.target.value)}
+                                        required
+                                    ></textarea>
+                                </div>
+                                <button type="submit" className="btn btn-primary">
+                                    Add widget
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
